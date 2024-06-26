@@ -5,6 +5,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { GoCheckCircleFill } from "react-icons/go";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { server } from "../../constants/config";
 
 const Dashboard = () => {
   const [appointments, setAppointments] = useState([]);
@@ -13,7 +14,7 @@ const Dashboard = () => {
     const fetchAppointments = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:4000/api/v1/appointment/getall",
+          `${server}/api/v1/appointment/getall`,
           { withCredentials: true }
         );
         setAppointments(data.appointments);
